@@ -1,11 +1,12 @@
 {
   "name": "krakenflex-backend-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tech test for Krakenflex",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build-run": "tsc && cd ./build && node index.js"
+    "test": "npx jest",
+    "build": "tsc",
+    "program": "cd ./build && node index.js"
   },
   "repository": {
     "type": "git",

@@ -7,7 +7,6 @@ export const filterAndMergeSiteOutages = (
   devices: Devices[]
 ): SiteOutageData[] => {
   let siteOutages: SiteOutageData[] = [];
-
   outages.filter((siteOutage) => {
     if (siteOutage.begin >= dateCutoff) {
       const device = devices.find((device) => device.id === siteOutage.id);

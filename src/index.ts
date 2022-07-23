@@ -8,12 +8,12 @@ const handler = async (siteId: string): Promise<void> => {
     console.log("Getting site info ...");
     const siteInfo = await apiFns.getSiteInfo(siteId);
     console.log(`Successfully retrieved site info for ${siteInfo.name}`);
+    // filter and merge dat
+
+    // await apiFns.postSiteOutages(siteId, siteOutages)
   } catch (err) {
     console.log(err);
   }
-  // get site info
-  // filter outages if they are different ID or pre 2022 and combine remainder with site info
-  // post data to site endpoint
 };
 
 handler("norwich-pear-tree");

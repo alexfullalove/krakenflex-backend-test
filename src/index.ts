@@ -1,29 +1,35 @@
 import * as apiFns from "./api.service";
 import * as logicFns from "./outage-logic";
 
-const handler = async (siteId: string): Promise<void> => {
+const siteId = "norwich-pear-tree";
+
+export const handler = async (siteId: string): Promise<void> => {
   try {
-    console.log("Fetching all outages ...");
+    console.log("Fetching all outages and site info ...");
     const outages = await apiFns.getOutages();
-    console.log(`Returned ${outages.length} outages`);
-    console.log("Getting site info ...");
+    if (outages.length === 0) {
+      console.log("No outages were returned");
+      return;
+    }
+
     const siteInfo = await apiFns.getSiteInfo(siteId);
-    console.log(`Successfully retrieved site info for ${siteInfo.name}`);
     const filteredSiteOutages = logicFns.filterAndMergeSiteOutages(
       outages,
       siteInfo.devices
     );
-    console.log(
-      `Found ${filteredSiteOutages.length} for site: ${siteInfo.name}`
-    );
+
+    if (filteredSiteOutages.length === 0) {
+      console.log("No outages matched any of the devices");
+      return;
+    }
 
     await apiFns.postSiteOutages(siteId, filteredSiteOutages);
     console.log(
-      `Successfully posted ${filteredSiteOutages.length} outages to site-outages endpoint`
+      `Successfully posted ${filteredSiteOutages.length} devices out of ${outages.length} outages to site-outages endpoint for site: ${siteInfo.name}`
     );
   } catch (err: any) {
-    console.log(err);
+    console.error(err.response.status, err.response.data.message);
   }
 };
 
-handler("norwich-pear-tree");
+handler(siteId);

@@ -1,7 +1,7 @@
 export interface Outages {
   id: string;
-  begin: Date;
-  end: Date;
+  begin: string;
+  end: string;
 }
 
 export interface SiteOutageData extends Outages {
@@ -12,7 +12,7 @@ export interface SiteInfo extends Devices {
   devices: Devices[];
 }
 
-interface Devices {
+export interface Devices {
   id: string;
   name: string;
 }

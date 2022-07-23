@@ -1,6 +1,6 @@
 import axios from "axios";
 import apiConfig from "./api.config";
-import { Outages, SiteInfo } from "./types";
+import { Outages, SiteInfo, SiteOutageData } from "./types";
 
 export const getOutages = async (): Promise<Outages[]> => {
   const response = await axios.get(`${apiConfig.baseUrl}/outages`, {
@@ -19,6 +19,17 @@ export const getSiteInfo = async (siteId: string): Promise<SiteInfo> => {
   });
   return response.data;
 };
-// get site info
+
+export const postSiteOutages = async (
+  siteId: string,
+  siteOutageInfo: SiteOutageData[]
+): Promise<void> => {
+  await axios.post(`${apiConfig.baseUrl}/site-outages/${siteId}`, {
+    headers: {
+      "x-api-key": apiConfig.apiKey,
+    },
+    body: siteOutageInfo,
+  });
+};
 
 // post site outages

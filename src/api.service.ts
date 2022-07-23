@@ -24,12 +24,10 @@ export const postSiteOutages = async (
   siteId: string,
   siteOutageInfo: SiteOutageData[]
 ): Promise<void> => {
-  await axios.post(`${apiConfig.baseUrl}/site-outages/${siteId}`, {
-    headers: {
-      "x-api-key": apiConfig.apiKey,
-    },
-    body: siteOutageInfo,
+  await axios({
+    method: "POST",
+    url: `${apiConfig.baseUrl}/site-outages/${siteId}`,
+    headers: { "x-api-key": apiConfig.apiKey },
+    data: siteOutageInfo,
   });
 };
-
-// post site outages

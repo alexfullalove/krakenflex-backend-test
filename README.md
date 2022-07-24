@@ -53,3 +53,26 @@ Some considerations:
 ```bash
 npm install
 ```
+
+2.  To run the tests simply run the following command:
+
+```bash
+npm test
+```
+
+3. Before running the program you will first need to run the following command:
+
+```bash
+npm run build
+```
+
+4. You will then need to add a `.env` file to your build folder, inside this file you will need to add the following environment variables and add values where appropriate (you may have to close and re open your IDE at this point):
+
+`API_BASE_URL=https://api.krakenflex.systems/interview-tests-mock-api/v1`
+`API_KEY=<API_KEY>`
+
+5. Finally you should now be able to run the program in the terminal with the following command:
+
+```bash
+npm run program
+```

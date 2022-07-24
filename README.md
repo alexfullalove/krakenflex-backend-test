@@ -48,6 +48,8 @@ Some considerations:
 
 ## How to Use
 
-1. Fork and clone this repo
+1. Fork and clone this repo and run the following command to install dependencies:
 
-2. run `npm install`
+```bash
+npm install
+```

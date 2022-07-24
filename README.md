@@ -47,3 +47,7 @@ Some considerations:
 - There was a bonus requirement to make the program resilient to 500 status codes, the current implementation makes use of a try catch block which should handle any api errors and print the status code and the error message to the console for the end user. Another solution could be to implement a system that would re-run the program a maxiumum number of 3 times should a 500 status code be returned, although this solution was not implemented in this program.
 
 ## How to Use
+
+1. Fork and clone this repo
+
+2. run `npm install`
